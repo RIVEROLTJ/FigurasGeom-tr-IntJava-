@@ -1,0 +1,426 @@
+FIGURAS GEOMÉTRICA
+
+package org.generation;
+
+public interface FiguraGeometrica {
+	public double calcularArea();
+	public double calcularPerimetro();
+	public String getName();
+}// interface FiguraGeometrica
+
+MAIN
+package org.generation;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		   Triangulo t1 = new  Triangulo("Triángulo", 20.0, 10.0, 15.0);
+		   Triangulo t2 = new  Triangulo("Bermudas", 87.0, 121.0, 101.0);
+		   Cuadrado c1 = new Cuadrado("Cuadrado", 127.0);
+		   Rectangulo r1 = new Rectangulo("Rectángulo", 27.0, 12.0);
+		   Rombo r2 = new Rombo("Rombo", 32.0, 12.0, 18.0);
+		   Romboide r3 = new Romboide("Romboide", 24.0, 56.0);
+		   Trapecio t3 = new Trapecio("Trapecio", 5.0, 7.0, 14.0, 3.0, 8.0, 19.0, 10.0);
+		   imprimirCalculo(t1); imprimirCalculo(t2);
+		   imprimirCalculo(c1);
+		   imprimirCalculo(r1);
+		   imprimirCalculo(r2);
+		   imprimirCalculo(r3);
+		   imprimirCalculo(t3);
+	}//main
+	
+	public static void imprimirCalculo(FiguraGeometrica t) {
+		System.out.println(t);
+		System.out.println("+========================================");
+		System.out.println("|El área de ["+t.getName()+"] es: " + t.calcularArea() + 
+				"\n" + "|El perímetro de ["+t.getName()+"] es: " + t.calcularPerimetro());
+		System.out.println("+========================================");
+	}//imprimirCalculo
+
+}//classTestFiguraa
+
+TRIÁNGULO
+package org.generation;
+
+public class Triangulo implements FiguraGeometrica{
+	private String name;
+	private double base;
+	private double altura;
+	private double lado;
+	public Triangulo(String name, double base, double altura, double lado) {
+		super();
+		this.name = name;
+		this.base = base;
+		this.altura = altura;
+		this.lado = lado;
+	}//Constructor
+	
+	public double calcularArea() {
+		return (getBase() * getAltura())/2;	
+	}//calcularArea
+	
+	public double calcularPerimetro() {
+		return (getLado() + getLado() + getLado());
+	}//calcularPerimetro
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getBase() {
+		return base;
+	}
+	public void setBase(double base) {
+		this.base = base;
+	}
+	public double getAltura() {
+		return altura;
+	}
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+	public double getLado() {
+		return lado;
+	}
+	public void setLado(double lado) {
+		this.lado = lado;
+	}
+	@Override
+	public String toString() {
+		return "Triángulo [name=" + name + ", base=" + base + ", altura=" + altura + ", lado=" + lado + "]";
+	}//toString
+	
+		
+}//classTRIANGULO
+
+CUADRADO
+package org.generation;
+
+public class Cuadrado implements FiguraGeometrica{
+	private String name;
+	private double lado;
+	public Cuadrado(String name, double lado) {
+		super();
+		this.name = name;
+		this.lado = lado;
+	}//constructor
+	
+    public double calcularArea() {
+    	return (getLado() * getLado());
+    }//calcularArea
+    
+	public double calcularPerimetro() {
+		return (getLado()*4);
+	}//calcularPerimetro
+	
+	public String getName() {
+		return name;
+	}//setName
+	
+	public void setName(String name) {
+		this.name = name;
+	}//getName
+	
+	public double getLado() {
+		return lado;
+	}//getLado
+	
+	public void setLado(double lado) {
+		this.lado = lado;
+	}//setLado
+	
+	@Override
+	public String toString() {
+		return "Cuadrado [name=" + name + ", lado=" + lado + "]";
+	}//toString
+	
+} //classCUADRADO
+
+
+RECTÁNGULO
+package org.generation;
+
+public class Rectangulo implements FiguraGeometrica {
+	private String nombre;
+	private double base;
+	private double altura;
+	
+	public Rectangulo(String nombre, double base, double altura) {
+		super();
+		this.nombre = nombre;
+		this.base = base;
+		this.altura = altura;
+	}//constructor
+	
+	public String getName() {
+		return this.nombre;
+	}
+	
+	public double calcularPerimetro() {
+		return (getBase()*2) + (getAltura()*2);
+	}// calcularPerimetro
+	
+	public double calcularArea() {
+			return getBase()*getAltura();
+	}//calcularArea
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getBase() {
+		return base;
+	}
+
+	public void setBase(double base) {
+		this.base = base;
+	}
+
+	public double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+
+	@Override
+	public String toString() {
+		return "Rectángulo [nombre=" + nombre + ", base=" + base + ", altura=" + altura + "]";
+	}//toString
+	
+}//classRECTANGULO
+
+ROMBO
+package org.generation;
+
+public class Rombo implements FiguraGeometrica{
+	private String name;
+	private double lado;
+	private double diagonalMenor;
+	private double diagonalMayor;
+	public Rombo(String name, double lado, double diagonalMenor, double diagonalMayor) {
+		super();
+		this.name = name;
+		this.lado = lado;
+		this.diagonalMenor = diagonalMenor;
+		this.diagonalMayor = diagonalMayor;
+		}//Constructor
+	
+	public double calcularArea(){
+		return (getDiagonalMayor() * getDiagonalMenor())/2;
+	}//calcularArea
+	
+	public double calcularPerimetro() {
+		return (getLado() * 4);
+	}//calcularPerimetro
+	
+	public String getName() {
+		return name;
+	}//getName
+	
+	public void setName(String name) {
+		this.name = name;
+	}//setName
+	
+	public double getLado() {
+		return lado;
+	}//getLado
+	
+	public void setLado(double lado) {
+		this.lado = lado;
+	}//setLado
+	
+	public double getDiagonalMenor() {
+		return diagonalMenor;
+	}//getDiagonalMenor
+	
+	public void setDiagonalMenor(double diagonalMenor) {
+		this.diagonalMenor = diagonalMenor;
+	}//setDiagonalMenor
+	
+	public double getDiagonalMayor() {
+		return diagonalMayor;
+	}//getDiagonalMayor
+	
+	public void setDiagonalMayor(double diagonalMayor) {
+		this.diagonalMayor = diagonalMayor;
+	}//set diagonalMayor
+	
+	@Override
+	public String toString() {
+		return "Rombo [name=" + name + ", lado=" + lado + ", diagonal mayor=" + diagonalMayor + ", diagonal menor=" + diagonalMenor + "]";
+	}//toString
+	
+}//classROMBO
+
+
+TRAPECIO
+package org.generation;
+
+public class Trapecio implements FiguraGeometrica{
+	private String name;
+	private double ladoUno;
+	private double ladoDos;
+	private double ladoTres;
+	private double ladoCuatro;
+	private double baseMenor;
+	private double baseMayor;
+	private double altura;
+	public Trapecio (String name, double ladoUno, double ladoDos, double ladoTres, double ladoCuatro, 
+			double baseMenor, double baseMayor, double altura) {
+		super();
+		this.name = name;
+		this.ladoUno = ladoUno;
+		this.ladoDos = ladoDos;
+		this.ladoTres = ladoTres;
+		this.ladoCuatro = ladoCuatro;
+		this.baseMenor = baseMenor;
+		this.baseMayor = baseMayor;
+		this.altura = altura;
+	}//Constructor
+	
+	public double calcularArea(){
+		return (getAltura() * (getBaseMayor() + getBaseMenor()))/2 ;
+	}//calcularArea
+	
+	public double calcularPerimetro() {
+		return (getLadoUno() + getLadoDos() + getLadoTres() + getLadoCuatro());
+	}//calcularPerimetro
+	
+	public String getName() {
+		return name;
+		}//getName
+	
+	public void setName(String name) {
+		this.name = name;
+	}//setName
+	
+	public double getLadoUno() {
+		return ladoUno;
+	}//getLadoUno
+	
+	public void setLadoUno(double ladoUno) {
+		this.ladoUno = ladoUno;
+	}//setLadoUno
+	
+	public double getLadoDos() {
+		return ladoDos;
+	}//getLadoDos
+	
+	public void setLadoDos(double ladoDos) {
+		this.ladoDos = ladoDos;
+	}//setLadoDos
+	
+	public double getLadoTres() {
+		return ladoTres;
+	}
+	
+	public void setLadoTres(double ladoTres) {
+		this.ladoTres = ladoTres;
+	}//setLadoTres
+	
+	public double getLadoCuatro() {
+		return ladoCuatro;
+	}
+	
+	public void setLadoCuatro(double ladoCuatro) {
+		this.ladoCuatro = ladoCuatro;
+	}//setLadoCuatro
+	
+	public double getBaseMenor() {
+		return baseMenor;
+	}//getBaseMenor
+	
+	public void setBaseMenor(double baseMenor) {
+		this.baseMenor = baseMenor;
+	}//setBaseMenor
+	
+	public double getBaseMayor() {
+		return baseMayor;
+	}//getBaseMayor
+	
+	public void setBaseMayor(double baseMayor) {
+		this.baseMayor = baseMayor;
+	}//setBaseMenor
+	
+	public double getAltura() {
+		return altura;
+	}//getAltura
+	
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}//setAltura
+	
+	@Override
+	public String toString() {
+		return "Trapecio [name=" + name + ", lado uno=" + ladoUno + ", lado dos=" + ladoDos + ", lado tres=" + ladoTres + 
+				", lado cuatro" + ladoCuatro + ", base menor" + baseMenor + ", base mayor" + baseMayor + ", altura" + altura + "]";
+	}//toString
+	
+}//classTRAPECIO
+
+
+ROMBOIDE
+package org.generation;
+
+public class Romboide implements FiguraGeometrica{
+
+	private String nombre;
+	private double base;
+	private double altura;
+	
+	public Romboide (String nombre, double base, double altura) {
+		super();
+		this.nombre = nombre;
+		this.base = base;
+		this.altura = altura;
+	}//constructor
+	
+	public String getName() {
+		return this.nombre;
+	}
+	
+	public double calcularPerimetro() {
+		return (getBase()*2) + (getAltura()*2);
+	}// calcularPerimetro
+	
+	public double calcularArea() {
+			return getBase()*getAltura();
+	}//calcularArea
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getBase() {
+		return base;
+	}
+
+	public void setBase(double base) {
+		this.base = base;
+	}
+
+	public double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+
+	@Override
+	public String toString() {
+		return "Romboide [nombre=" + nombre + ", base=" + base + ", altura=" + altura + "]";
+	}//toString
+	
+}//classROMBOIDE
